@@ -2,8 +2,9 @@
 
 import Image from 'next/image'
 import { useCallback, useEffect, useState } from 'react'
-import { X, ChevronLeft, ChevronRight } from 'lucide-react'
+import { X, ChevronLeft, ChevronRight, Mail, Phone } from 'lucide-react'
 import type { Painting } from '@/data/paintings'
+import { site, emailHref, phoneHref } from '@/data/site'
 
 export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
@@ -136,6 +137,32 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
                     {active.description}
                   </p>
                 ) : null}
+
+                <div className="mt-6 border-t border-background/15 pt-5">
+                  <p className="text-xs uppercase tracking-[0.28em] text-background/50">
+                    Interested in this piece?
+                  </p>
+                  <div className="mt-3 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
+                    <a
+                      href={`${emailHref}?subject=${encodeURIComponent(
+                        `Inquiry: “${active.title}” by ${active.artist}`,
+                      )}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-2 bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-background/90"
+                    >
+                      <Mail className="size-4" aria-hidden="true" />
+                      Email to inquire
+                    </a>
+                    <a
+                      href={phoneHref}
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-2 text-sm text-background/70 underline-offset-4 transition-colors hover:text-background hover:underline"
+                    >
+                      <Phone className="size-4" aria-hidden="true" />
+                      {site.phone}
+                    </a>
+                  </div>
+                </div>
               </figcaption>
             </figure>
 

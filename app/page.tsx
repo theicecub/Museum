@@ -24,8 +24,8 @@ export default function HomePage() {
           <p className="mt-6 max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
             The Meridian Collection is a small, carefully kept gathering of
             paintings — landscapes, portraits, and still lifes spanning several
-            centuries. There is nothing to buy and nothing to sign up for. Just
-            come in, take your time, and look closely.
+            centuries. Take your time, look closely, and if a piece speaks to
+            you, each one is available to acquire.
           </p>
           <div className="mt-9">
             <Link
@@ -116,7 +116,8 @@ export default function HomePage() {
               <p>
                 The collection grows slowly. Each piece is chosen for the way it
                 rewards a second, longer look. Click any painting in the gallery
-                to see it enlarged and read a few words about it.
+                to see it enlarged, read a few words about it, and find how to
+                inquire if you would like to make it yours.
               </p>
             </div>
           </div>
