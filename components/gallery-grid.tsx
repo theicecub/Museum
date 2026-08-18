@@ -95,7 +95,7 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
           </div>
 
           <div
-            className="flex flex-1 items-center justify-center px-4 pb-4 sm:px-16"
+            className="min-h-0 flex-1 overflow-y-auto px-4 pb-8 sm:px-16"
             onClick={close}
           >
             <button
@@ -111,16 +111,16 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
             </button>
 
             <figure
-              className="flex max-h-full max-w-4xl flex-col items-center"
+              className="mx-auto flex w-full max-w-4xl flex-col items-center py-2"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="relative flex min-h-0 flex-1 items-center justify-center">
+              <div className="relative flex min-h-0 items-center justify-center">
                 <Image
                   src={active.image || '/placeholder.svg'}
                   alt={`${active.title} by ${active.artist}`}
                   width={1400}
                   height={1700}
-                  className="max-h-[70vh] w-auto object-contain shadow-2xl"
+                  className="max-h-[48svh] w-auto object-contain shadow-2xl sm:max-h-[54svh]"
                   sizes="90vw"
                   priority
                 />

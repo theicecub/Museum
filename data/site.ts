@@ -11,10 +11,10 @@ export const site = {
   name: 'The Meridian Collection',
 
   /** Sales email address. Used for the "Email to inquire" links. */
-  email: 'alihalihan@gmail.com',
+  email: 'hello@meridiancollection.com',
 
   /** Sales phone number, shown to visitors exactly as written here. */
-  phone: '+7 700 156 7881',
+  phone: '+1 (212) 555-0148',
 }
 
 // A version of the phone number safe to use inside a tel: link
