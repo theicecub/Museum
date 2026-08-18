@@ -1,7 +1,17 @@
+'use client'
+
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { ThemeToggle } from '@/components/theme-toggle'
 
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/gallery', label: 'Gallery' },
+]
+
 export function SiteHeader() {
+  const pathname = usePathname()
+
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 md:px-10">
@@ -15,18 +25,23 @@ export function SiteHeader() {
         </Link>
         <div className="flex items-center gap-6">
           <nav aria-label="Primary" className="flex items-center gap-6 text-sm">
-            <Link
-              href="/"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            >
-              Home
-            </Link>
-            <Link
-              href="/gallery"
-              className="text-foreground underline-offset-4 transition-colors hover:text-accent hover:underline"
-            >
-              Gallery
-            </Link>
+            {navItems.map((item) => {
+              const isActive = pathname === item.href
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={isActive ? 'page' : undefined}
+                  className={
+                    isActive
+                      ? 'font-medium text-accent underline-offset-4 decoration-accent/60 underline'
+                      : 'text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline'
+                  }
+                >
+                  {item.label}
+                </Link>
+              )
+            })}
           </nav>
           <ThemeToggle />
         </div>

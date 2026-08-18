@@ -80,14 +80,14 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
           role="dialog"
           aria-modal="true"
           aria-label={`${active.title} by ${active.artist}`}
-          className="fixed inset-0 z-50 flex flex-col bg-foreground/92 backdrop-blur-sm"
+          className="fixed inset-0 z-50 flex flex-col bg-scrim/92 backdrop-blur-sm"
           onClick={close}
         >
           <div className="flex items-center justify-end px-6 py-5">
             <button
               type="button"
               onClick={close}
-              className="flex items-center gap-2 text-sm text-background/70 transition-colors hover:text-background"
+              className="flex items-center gap-2 text-sm text-scrim-foreground/70 transition-colors hover:text-scrim-foreground"
             >
               Close
               <X className="size-5" aria-hidden="true" />
@@ -105,7 +105,7 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
                 e.stopPropagation()
                 step(-1)
               }}
-              className="absolute left-2 top-1/2 hidden -translate-y-1/2 rounded-full p-2 text-background/60 transition-colors hover:text-background sm:block"
+              className="absolute left-2 top-1/2 hidden -translate-y-1/2 rounded-full p-2 text-scrim-foreground/60 transition-colors hover:text-scrim-foreground sm:block"
             >
               <ChevronLeft className="size-8" aria-hidden="true" />
             </button>
@@ -125,21 +125,21 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
                   priority
                 />
               </div>
-              <figcaption className="mt-5 max-w-xl text-center text-background">
+              <figcaption className="mt-5 max-w-xl text-center text-scrim-foreground">
                 <p className="font-serif text-xl">{active.title}</p>
-                <p className="mt-1 text-sm text-background/70">
+                <p className="mt-1 text-sm text-scrim-foreground/70">
                   {active.artist}
                   {active.year ? `, ${active.year}` : ''}
                   {active.medium ? ` · ${active.medium}` : ''}
                 </p>
                 {active.description ? (
-                  <p className="mt-3 text-sm leading-relaxed text-background/60 text-pretty">
+                  <p className="mt-3 text-sm leading-relaxed text-scrim-foreground/60 text-pretty">
                     {active.description}
                   </p>
                 ) : null}
 
-                <div className="mt-6 border-t border-background/15 pt-5">
-                  <p className="text-xs uppercase tracking-[0.28em] text-background/50">
+                <div className="mt-6 border-t border-scrim-foreground/15 pt-5">
+                  <p className="text-xs uppercase tracking-[0.28em] text-scrim-foreground/50">
                     Interested in this piece?
                   </p>
                   <div className="mt-3 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
@@ -148,7 +148,7 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
                         `Inquiry: “${active.title}” by ${active.artist}`,
                       )}`}
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-2 bg-background px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-background/90"
+                      className="inline-flex items-center gap-2 bg-scrim-foreground px-5 py-2.5 text-sm font-medium text-scrim transition-colors hover:bg-scrim-foreground/90"
                     >
                       <Mail className="size-4" aria-hidden="true" />
                       Email to inquire
@@ -156,7 +156,7 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
                     <a
                       href={phoneHref}
                       onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-2 text-sm text-background/70 underline-offset-4 transition-colors hover:text-background hover:underline"
+                      className="inline-flex items-center gap-2 text-sm text-scrim-foreground/70 underline-offset-4 transition-colors hover:text-scrim-foreground hover:underline"
                     >
                       <Phone className="size-4" aria-hidden="true" />
                       {site.phone}
@@ -173,7 +173,7 @@ export function GalleryGrid({ paintings }: { paintings: Painting[] }) {
                 e.stopPropagation()
                 step(1)
               }}
-              className="absolute right-2 top-1/2 hidden -translate-y-1/2 rounded-full p-2 text-background/60 transition-colors hover:text-background sm:block"
+              className="absolute right-2 top-1/2 hidden -translate-y-1/2 rounded-full p-2 text-scrim-foreground/60 transition-colors hover:text-scrim-foreground sm:block"
             >
               <ChevronRight className="size-8" aria-hidden="true" />
             </button>
