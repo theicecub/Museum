@@ -6,7 +6,6 @@
 // site updates automatically.
 // =============================================================================
 
-
 export const site = {
   /** The museum / collection name. */
   name: 'The Meridian Collection',

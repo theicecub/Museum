@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Fraunces, Inter } from 'next/font/google'
+import { ThemeProvider } from '@/components/theme-provider'
 import './globals.css'
 
 const display = Fraunces({
@@ -21,27 +22,16 @@ export const metadata: Metadata = {
     'A quiet, gallery-like space for browsing a small collection of paintings. View the full gallery and look closely at each work.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png?v=2',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png?v=2',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg?v=2',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png?v=2',
+    icon: 'data:,',
   },
 }
 
 export const viewport: Viewport = {
-  colorScheme: 'light',
-  themeColor: '#f4f2ec',
+  colorScheme: 'light dark',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f4f2ec' },
+    { media: '(prefers-color-scheme: dark)', color: '#1b1c1f' },
+  ],
 }
 
 export default function RootLayout({
@@ -50,10 +40,16 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`light bg-background ${display.variable} ${body.variable}`}>
+    <html
+      lang="en"
+      suppressHydrationWarning
+      className={`bg-background ${display.variable} ${body.variable}`}
+    >
       <body className="font-sans antialiased">
-        {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
+        <ThemeProvider>
+          {children}
+          {process.env.NODE_ENV === 'production' && <Analytics />}
+        </ThemeProvider>
       </body>
     </html>
   )
